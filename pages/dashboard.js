@@ -3,6 +3,8 @@ import EventCard from "../components/EventCard/EventCard";
 import axios from "../lib/axios";
 import { useState, useEffect } from "react";
 import { Grid } from "../assets/styles/shared";
+import Modal from "../components/Modal/Modal";
+import CreateEventForm from "../containers/CreateEventForm/CreateEventForm";
 
 const Dashboard = () => {
   const [events, setEvents] = useState({
@@ -40,6 +42,9 @@ const Dashboard = () => {
         "Loading events"
       ) : (
         <>
+          <Modal>
+            <CreateEventForm />
+          </Modal>
           <div>
             <button type="button" onClick={() => toggleGridList(true)}>
               grid

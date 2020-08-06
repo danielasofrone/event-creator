@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
+import * as S from "./heading.styled";
 
-const Heading = ({title, text}) => (
-  <div>
+const Heading = ({ title, text }) => (
+  <S.HeadingWrapper center>
     <h1>{title}</h1>
     <p>{text}</p>
-  </div>
+  </S.HeadingWrapper>
 );
 
 Heading.propTypes = {

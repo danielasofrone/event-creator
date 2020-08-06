@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const CardWrapper = styled.div`
   width: 100%;
@@ -40,10 +40,10 @@ export const AttendeesCount = styled.div`
 
   ${({ isGrid }) =>
     !isGrid &&
-    `
-    display: flex;
-    align-items: center;
-  `};
+    css`
+      display: flex;
+      align-items: center;
+    `};
 `;
 
 export const EventTitle = styled.h1`
@@ -58,10 +58,10 @@ export const EventTitle = styled.h1`
 
   ${({ isGrid }) =>
     !isGrid &&
-    `
-    display: flex;
-    align-items: center;
-  `};
+    css`
+      display: flex;
+      align-items: center;
+    `};
 `;
 
 export const EventDescription = styled.div`
@@ -75,12 +75,12 @@ export const EventDescription = styled.div`
 
   ${({ isGrid }) =>
     !isGrid &&
-    `
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 2;
-  `};
+    css`
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 2;
+    `};
 `;
 
 export const EventDate = styled.div`
@@ -94,10 +94,10 @@ export const EventDate = styled.div`
 
   ${({ isGrid }) =>
     !isGrid &&
-    `
-    display: flex;
-    align-items: center;
-  `};
+    css`
+      display: flex;
+      align-items: center;
+    `};
 `;
 
 export const EventAuthor = styled(EventDate)`
@@ -109,8 +109,8 @@ export const EventAuthor = styled(EventDate)`
 
   ${({ isGrid }) =>
     !isGrid &&
-    `
-    display: flex;
-    align-items: center;
-  `};
+    css`
+      display: flex;
+      align-items: center;
+    `};
 `;

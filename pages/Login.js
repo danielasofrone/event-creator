@@ -16,7 +16,7 @@ const Login = () => {
       placeholder: "E-mail",
       error: false,
       errorMessage: "",
-      value: "brucebanner@strv.com",
+      value: "",
       validations: ["required", "email"],
     },
     password: {
@@ -25,7 +25,7 @@ const Login = () => {
       placeholder: "Password",
       error: false,
       errorMessage: "",
-      value: "kill3r",
+      value: "",
       validations: ["required"],
     },
   });
