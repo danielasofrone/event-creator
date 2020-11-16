@@ -1,10 +1,11 @@
 import { useState } from "react";
+import axios from "../../lib/axios";
 import Input from "../../components/Form/Input/Input";
 import Button from "../../components/Button/Button";
 import Heading from "../../components/Heading/Heading";
 
 const CreateEventForm = ({}) => {
-  const [inputFields] = useState({
+  const [inputFields, setInputFields] = useState({
     title: {
       label: "Title",
       type: "text",
@@ -52,30 +53,69 @@ const CreateEventForm = ({}) => {
     },
   });
 
-  const onSubmit = () => {};
-  const onChange = () => {};
+  const onSubmit = (evt) => {
+    evt.preventDefault();
+    axios
+      .post(
+        "./events",
+        {
+          title: "Awesome event in Vienna",
+          description: "A bunch of people doing awesome stuff in Vienna",
+          startsAt: "2020-12-08T10:46:33.901Z",
+          capacity: 5,
+        },
+        {
+          headers: {
+            Authorization: localStorage.getItem("token"),
+          },
+        }
+      )
+      .then((result) => {
+        setEvents({
+          status: "done",
+          data: result.data,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const onChange = ({ target: { value, name } }) =>
+    setInputFields((prevState) => ({
+      ...prevSate,
+      [name]: {
+        ...prevState[name],
+        error: false,
+        errorMessage: "",
+      },
+    }));
+
   const onBlur = () => {};
 
   return (
     <>
       <Heading title={"Create new event"} text={"Enter event details"} />
       <form onSubmit={onSubmit}>
-        {Object.keys(inputFields).map((key) => (
-          <Input
-            onChange={onChange}
-            onBlur={onBlur}
-            key={key}
-            name={key}
-            label={inputFields[key].label}
-            type={inputFields[key].type}
-            placeholder={inputFields[key].placeholder}
-            error={inputFields[key].error}
-            errorMessage={inputFields[key].errorMessage}
-            value={inputFields[key].value}
-          />
-        ))}
-        <br />
-        <Button type="submit">Create new event</Button>
+        <div>
+          {Object.keys(inputFields).map((key) => (
+            <Input
+              onChange={onChange}
+              onBlur={onBlur}
+              key={key}
+              name={key}
+              label={inputFields[key].label}
+              type={inputFields[key].type}
+              placeholder={inputFields[key].placeholder}
+              error={inputFields[key].error}
+              errorMessage={inputFields[key].errorMessage}
+              value={inputFields[key].value}
+            />
+          ))}
+        </div>
+        <Button center type="submit">
+          Create new event
+        </Button>
       </form>
     </>
   );

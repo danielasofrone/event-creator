@@ -11,11 +11,13 @@ export const Button = styled.button`
   line-height: 1.14;
   letter-spacing: 1px;
   text-align: center;
-  padding: 7px 0;
+  padding: ${({ small }) => (small ? "7px 0" : "14px 0")};
   background-color: ${({ active }) => (active ? "#ff4081" : "#22d486")};
   cursor: pointer;
   transition: background-color 0.3s;
   text-transform: uppercase;
+  display: block;
+  margin: ${({ center }) => (center ? "auto" : "0")};
 
   &:hover {
     background-color: ${({ active }) => (active ? "#e73370" : "#20bd78")};

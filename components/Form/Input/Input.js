@@ -3,6 +3,8 @@
 import PropTypes from "prop-types";
 import * as S from "./input.styled";
 
+const activeLabelTypes = ["time", "date"];
+
 const Input = ({
   label,
   name,
@@ -16,7 +18,10 @@ const Input = ({
 }) => (
   <S.InputWrapper>
     {label && (
-      <S.Label isActive={value !== ""} htmlFor={name}>
+      <S.Label
+        isActive={value !== "" || activeLabelTypes.includes(type)}
+        htmlFor={name}
+      >
         {label}
       </S.Label>
     )}
